@@ -3,36 +3,27 @@
 import math
 
 def recipe_batches(recipe, ingredients):
+# var for batches dict
+  batches = {}
 
-  flag = False # flag to help set baseline batch count
-  batches = 0 # lowest common denom for ingredient batches
-
-  for key in recipe.items():
-
-    # if recipe ingredient exists
-    if key in ingredients.keys():
-      # batches per ingredient amt floored
-      cur_batch = ingredients[key] // recipe[key]
-
-      # flag for if baseline batch hasn't been set
-      if flag == False:
-        flag = True
-        batches = cur_batch # 1st iteration will set the baseline
-
-      # if batch is less than min and flag has been set,
-      elif cur_batch < batches and flag:
-        batches = cur_batch # set new min
-
-    # if recipe ingredient is not present, no batches can be made
-    else:
+# iterate over recipe 
+  for key in recipe.keys():
+    if key in ingredients and ingredients[key] > recipe[key]:
+      print('batch is possible')
+      batches[key] = 
+    else: 
+      print('batch is not possible')
       return 0
 
-  return batches
+  # if key doesnt exist, return 0
+  # elif recipe key >= ingredient, return 0
 
+recipe_batches({ 'milk': 100, 'butter': 50, 'cheese': 10 }, { 'milk': 198, 'butter': 52, 'cheese': 10 })
+# recipe_batches({ 'milk': 100, 'flour': 4, 'sugar': 10, 'butter': 5 }, { 'milk': 1288, 'flour': 9, 'sugar': 95 })
 
-if __name__ == '__main__':
-  # Change the entries of these dictionaries to test
-  # your implementation with different inputs
-  recipe = { 'milk': 100, 'butter': 50, 'flour': 5 }
-  ingredients = { 'milk': 132, 'butter': 48, 'flour': 51 }
-  print("{batches} batches can be made from the available ingredients: {ingredients}.".format(batches=recipe_batches(recipe, ingredients), ingredients=ingredients))
+# if __name__ == '__main__':
+#   # Change the entries of these dictionaries to test
+#   # your implementation with different inputs
+#   recipe = { 'milk': 100, 'butter': 50, 'flour': 5 }
+#   ingredients = { 'milk': 132, 'butter': 48, 'flour': 51 }
+#   print("{batches} batches can be made from the available ingredients: {ingredients}.".format(batches=recipe_batches(recipe, ingredients), ingredients=ingredients))
