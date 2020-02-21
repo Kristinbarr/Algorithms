@@ -13,7 +13,7 @@ def find_max_profit(prices):
         if prices[min_idx] > prices[i]:
             min_idx = i
 
-    # loop spliced array from min idx
+    # loop through the right side from min index in array
     for i in range(min_idx+1, len(prices)-1):
         if prices[max_idx] < prices[i]:
             max_idx = i
@@ -21,24 +21,7 @@ def find_max_profit(prices):
     # return max difference between max and min
     return prices[max_idx] - prices[min_idx]
 
-
-    # better time complexity:
-    # save high and low,
-    # set low as first item, high as last item
-    # save indexes for high and low
-    # iterate through left to right
-    # if high idx > low idx & high > low, save highs
-    # if low idx < high idx & low < high, save lows
-    # return high - low
-
-    # current_min_price_so_far = prices[0]
-    # max_profit_so_far = prices[len(prices)-1]
-    # prit(max_profit_so_far)
-
-    # for i in range(len(prices)):
-
-    #     high = prices[len(prices)-1]
-
+find_max_profit([10, 7, 5, 8, 11, 9])
 
 
 if __name__ == '__main__':
